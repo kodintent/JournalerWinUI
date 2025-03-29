@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="JournalerWinUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JournalerWinUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="JournalerWinUI">
+
+    <Grid x:Name="topgrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource BorderStyle}">
+            <TextBox x:Name="datetimezone" Text="" Style="{StaticResource ParamTextBoxStyle}"
+                     ToolTipService.ToolTip="Editable" PlaceholderText="datetimezone" />
+        </Border>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Style="{StaticResource StackPanelStyle}">
+            <Button x:Name="setfolder" Content="1" Click="Click_setfolder"  Background="#303030"
+                    ToolTipService.ToolTip="Set The Journaler Folder" FontFamily="Wingdings" 
+                     Style="{StaticResource ControlButtonStyle}"/>
+            <Button x:Name="export" Content="0" Click="Click_export"  Background="#303030"
+                    ToolTipService.ToolTip="Export Saved Entries to a File" FontFamily="Segoe UI Symbol"
+                     Style="{StaticResource ControlButtonStyle}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Style="{StaticResource StackPanelStyle}">
+            <Button x:Name="newentry" Content="" Click="Click_newentry" Background="#003000"
+                    ToolTipService.ToolTip="Save Current and Create New" FontFamily="Segoe UI Symbol" 
+                    Style="{StaticResource ControlButtonStyle}"/>
+            <Button x:Name="saveclose" Content="S/X" Click="Saveclose_Click" Background="#300000"
+                    ToolTipService.ToolTip="Save Current and Close App" FontFamily="Segoe UI Symbol" 
+                    Style="{StaticResource ControlButtonStyle}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboGridStyle}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!-- DEL Button doesnt use style so that foreground color preserved -->
+            <Button x:Name="deleteComboBox1" Grid.Column="0" Click="DeleteComboBox1Item" 
+                    ToolTipService.ToolTip="Delete Selected Location" Foreground="#800000"
+                    Content="DEL" VerticalAlignment="Center" BorderThickness="0"/>
+            <ComboBox x:Name="combobox1" Grid.Column="1" 
+                      ToolTipService.ToolTip="Location (Auto Inserted After DateTime)" 
+                      Style="{StaticResource ParamComboBoxStyle}"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboGridStyle}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="deleteComboBox2" Grid.Column="0" Click="DeleteComboBox1Item" 
+                    ToolTipService.ToolTip="Delete Selected Tag" Foreground="#800000"
+                    Content="DEL" VerticalAlignment="Center" BorderThickness="0"/>
+            <ComboBox x:Name="combobox2" Grid.Column="1" 
+                      ToolTipService.ToolTip="Tags (Auto Inserted After Content)" 
+                      Style="{StaticResource ParamComboBoxStyle}"/>
+        </Grid>
+
+        <TextBox x:Name="textentry" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" 
+                 Style="{StaticResource EntryTextBoxStyle}"/>
+    </Grid>
+
+</Window>
